@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "hast-util-from-html": "^2.0.3",
+    "hast-util-to-text": "^4.0.2",
+    "hono": "^4.6.3",
+    "mimetext": "^3.0.24",
+    "postal-mime": "^2.3.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240925.0",
+    "wrangler": "^3.78.12"
+  },
+  "packageManager": "pnpm@9.11.0"
+}
