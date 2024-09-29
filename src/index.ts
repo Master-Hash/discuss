@@ -87,8 +87,10 @@ export default {
 
       // const raw = await new Response(message.raw).text();
       const hash = await sha256(id!);
-      const [raw1, raw2] = message.raw.tee();
-      const msg = await PostalMime.parse(raw1);
+      // https://community.cloudflare.com/t/email-workers-access-to-attachments-body-or-raw-message/452913
+      // const [raw1, raw2] = message.raw.tee();
+      const s = await new Response(message.raw).text();
+      const msg = await PostalMime.parse(s);
 
       // If the replied message is not found, reject the message
       // It is likely to happen when the message is forwarded
@@ -107,7 +109,7 @@ export default {
         }
       }
 
-      await env.R2.put("Discuss/" + id + ".eml", raw2);
+      await env.R2.put("Discuss/" + id + ".eml", s);
 
       // If the Admin is the sender
       if (message.from === env.SUBSCRIBER || message.from.split("@")[1] === env.MAILBOX.split("@")[1]) {
