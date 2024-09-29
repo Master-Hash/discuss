@@ -87,6 +87,9 @@ export default {
 
       // const raw = await new Response(message.raw).text();
       const hash = await sha256(id!);
+
+      // Bug: 原始邮件似乎不能流式扔给 R2
+      // Provided readable stream must have a known length (request/response body or readable half of FixedLengthStream)
       // https://community.cloudflare.com/t/email-workers-access-to-attachments-body-or-raw-message/452913
       // const [raw1, raw2] = message.raw.tee();
       const s = await new Response(message.raw).text();
@@ -108,29 +111,31 @@ export default {
           return;
         }
       }
+      console.log(s);
+      await env.R2.put("Discuss/" + id?.slice(1, -1) + ".eml", s);
 
-      await env.R2.put("Discuss/" + id + ".eml", s);
+      // Add D1 record
+      const statement = env.DB.prepare("INSERT INTO GlobalMessages (Folder, MessageID, MessageIDHash, Epoch, InReplyTo, SubjectLine, Author, Recipients, RAWMessage, FolderSerial) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)")
+        .bind(
+          "Discuss",
+          msg.messageId,
+          hash,
+          new Date(msg.date!).valueOf() / 1000,
+          msg.inReplyTo ?? null,
+          msg.subject,
+          JSON.stringify(msg.from),
+          JSON.stringify([...(msg.to || []), ...(msg.cc || []), ...(msg.bcc || [])]),
+          true,
+          null,
+        );
+      await statement.run();
 
+      console.log(message, message.from);
       // If the Admin is the sender
-      if (message.from === env.SUBSCRIBER || message.from.split("@")[1] === env.MAILBOX.split("@")[1]) {
-        // pass
+      if (message.from === env.SUBSCRIBER || message.from.split("@")[1].includes(env.MAILBOX.split("@")[1])) {
+        console.log("发件人是我");
       } else {
-        // Add D1 record
-        const statement = env.DB.prepare("INSERT INTO GlobalMessages (Folder, MessageID, MessageIDHash, Epoch, InReplyTo, SubjectLine, Author, Recipients, RAWMessage, FolderSerial) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)")
-          .bind(
-            "Discuss",
-            msg.messageId,
-            hash,
-            new Date(msg.date!).valueOf() / 1000,
-            msg.inReplyTo ?? null,
-            msg.subject,
-            JSON.stringify(msg.from),
-            JSON.stringify([...(msg.to || []), ...(msg.cc || []), ...(msg.bcc || [])]),
-            true,
-            null,
-          );
-        await statement.run();
-
+        console.log("发件人不是我");
         // Forward to the Admin
         await message.forward(env.SUBSCRIBER); // It seems we don't have to tee the stream
       }
