@@ -33,6 +33,7 @@ export default {
         }
       });
       if (message.to !== env.MAILBOX) message.setReject("Illegal recipient");
+      if (message.from.includes("reply")) message.setReject("Sender in denylist");
       // const subject = message.headers.get("Subject");
       const id = message.headers.get("Message-ID");
 
