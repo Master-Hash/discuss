@@ -8,15 +8,7 @@ import PostalMime from 'postal-mime';
 
 // const app = new Hono();
 
-export interface Env {
-  MAILBOX: string;
-  SUBSCRIBER: string;
-  SENDER: string;
-  // 似乎 R2 元数据够我用了qaq
-  // 才怪，我就是要上数据库
-  DB: D1Database;
-  R2: R2Bucket;
-}
+
 
 // app.get('/', (c) => {
 //   return c.text('Hello Hono!');

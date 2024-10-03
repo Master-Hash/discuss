@@ -28,17 +28,17 @@ importers:
         specifier: ^4.20240925.0
         version: 4.20240925.0
       wrangler:
-        specifier: ^3.78.12
-        version: 3.78.12(@cloudflare/workers-types@4.20240925.0)
+        specifier: ^3.79.0
+        version: 3.79.0(@cloudflare/workers-types@4.20240925.0)
 
 packages:
 
-  '@babel/runtime-corejs3@7.25.6':
-    resolution: {integrity: sha512-Gz0Nrobx8szge6kQQ5Z5MX9L3ObqNwCQY1PSwSNzreFL7aHGxv8Fp2j3ETV6/wWdbiV+mW6OSm8oQhg3Tcsniw==}
+  '@babel/runtime-corejs3@7.25.7':
+    resolution: {integrity: sha512-gMmIEhg35sXk9Te5qbGp3W9YKrvLt3HV658/d3odWrHSqT0JeG5OzsJWFHRLiOohRyjRsJc/x03DhJm3i8VJxg==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.25.6':
-    resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
+  '@babel/runtime@7.25.7':
+    resolution: {integrity: sha512-FjoyLe754PMiYsFaN5C94ttGiOmBNYTf6pLr4xXHAT5uctHb092PBszndLDR5XA/jghQvn4n7JMHl7dmTgbm9w==}
     engines: {node: '>=6.9.0'}
 
   '@cloudflare/kv-asset-handler@0.3.4':
@@ -580,8 +580,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.78.12:
-    resolution: {integrity: sha512-a/xk/N04IvOGk9J+BLkiFg42GDyPS+0BiJimbrHsbX+CDr8Iqq3HNMEyQld+6zbmq01u/gmc8S7GKVR9vDx4+g==}
+  wrangler@3.79.0:
+    resolution: {integrity: sha512-29wzQWc5qNKtD3bSyAEX11j/U5IIk8xy2/ZJ4wljJlS5ppff8qGqI+LtlLmqjqTSeQqFLb87xRkms0YFUgNLXg==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -613,12 +613,12 @@ packages:
 
 snapshots:
 
-  '@babel/runtime-corejs3@7.25.6':
+  '@babel/runtime-corejs3@7.25.7':
     dependencies:
       core-js-pure: 3.38.1
       regenerator-runtime: 0.14.1
 
-  '@babel/runtime@7.25.6':
+  '@babel/runtime@7.25.7':
     dependencies:
       regenerator-runtime: 0.14.1
 
@@ -949,8 +949,8 @@ snapshots:
 
   mimetext@3.0.24:
     dependencies:
-      '@babel/runtime': 7.25.6
-      '@babel/runtime-corejs3': 7.25.6
+      '@babel/runtime': 7.25.7
+      '@babel/runtime-corejs3': 7.25.7
       js-base64: 3.7.7
       mime-types: 2.1.35
 
@@ -1110,7 +1110,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240925.0
       '@cloudflare/workerd-windows-64': 1.20240925.0
 
-  wrangler@3.78.12(@cloudflare/workers-types@4.20240925.0):
+  wrangler@3.79.0(@cloudflare/workers-types@4.20240925.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/workers-shared': 0.5.4
