@@ -130,7 +130,7 @@ export default {
       } else {
         console.log("发件人不是我");
         // Forward to the Admin
-        await message.forward(env.SUBSCRIBER); // It seems we don't have to tee the stream
+        // await message.forward(env.SUBSCRIBER); // It seems we don't have to tee the stream
       }
 
     } catch (e) {
