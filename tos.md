@@ -4,9 +4,9 @@
 
 ## 如何来信？
 
-向 discuss@hash.memorial 发送任意主题的邮件即可。服务端收到邮件后，会将邮件内容存入数据库，37分钟后，你的来信便发表在 land.hash.memorial/email 上，可与大家分享了。
+向 discuss@hash.moe 发送任意主题的邮件即可。服务端收到邮件后，会将邮件内容存入数据库，37分钟后，你的来信便发表在 land.hash.memorial/email 上，可与大家分享了。
 
-私人信件可以发给 hash@hash.memorial，但我鼓励你公开来信！
+私人信件可以发给 hash@hash.moe，但我鼓励你公开来信！
 
 为什么要等待37分钟？这并非人工审核，而是为了缓解一有趣的安全问题，我稍后会揭晓。
 
