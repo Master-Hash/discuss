@@ -39,8 +39,8 @@
 
 我推荐的方式是订阅 RSS。
 
-* `land.hash.memorial/sub` 包括所有来信和回信；
-* `land.hash.memorial/sub?mailto=<你的邮箱地址>` 包括给你的所有回信。
+* `land.hash.moe/sub` 包括所有来信和回信；
+* `land.hash.moe/sub?mailto=<你的邮箱地址>` 包括给你的所有回信。
 
 ## 我可以修改或者删除以前的发言吗？
 
